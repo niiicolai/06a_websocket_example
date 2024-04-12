@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Websocket example</title>
+</head>
+
+<body>
+    <h1>Websocket example</h1>
+    <button onclick="ping()">Ping</button>
+    <script>
+        const ws = new WebSocket("ws://localhost:8080");
+
+        ws.onopen = () => {
+            console.log("Connected to the server");
+        };
+
+        ws.onmessage = (event) => {
+            console.log("Message from the server:", event.data);
+        };
+
+        ws.onerror = (error) => {
+            console.log("Something went wrong", error);
+        };
+
+        function ping() {
+            ws.send("ping");
+        }
+    </script>
+</body>
+
+</html>
